@@ -28,6 +28,7 @@ android {
 apply plugin: 'android-unit-test'
 
 dependencies {
+    compile 'com.squareup:otto:1.3.+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     testCompile 'com.squareup:fest-android:1.0.+'
