@@ -5,36 +5,30 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.squareup.otto.Bus;
 import org.fmedlin.wikilooks.R;
-
+import org.fmedlin.wikilooks.android.presenter.LocationModelImpl;
+import org.fmedlin.wikilooks.android.presenter.LocationPresenter;
+import org.fmedlin.wikilooks.android.presenter.LocationView;
+import org.fmedlin.wikilooks.api.WikiLocationApi;
 
 public class MainActivity extends Activity {
+
+    Bus bus;
+    LocationPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        createPresenter();
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    private void createPresenter() {
+        bus = new Bus();
+        presenter = new LocationPresenter(
+                new LocationModelImpl(WikiLocationApi.getWikiLocationService(), bus),
+                new LocationView() { }); // No UI yet!
     }
 
 }

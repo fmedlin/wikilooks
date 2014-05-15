@@ -8,9 +8,10 @@ public class WikiLocationApi {
 
     static WikiLocationService service;
 
-    static WikiLocationService getWikiLocationService() {
+    public static WikiLocationService getWikiLocationService() {
         if (service == null) {
             service = new RestAdapter.Builder()
+                    .setEndpoint(ENDPOINT)
                     .build()
                     .create(WikiLocationService.class);
         }

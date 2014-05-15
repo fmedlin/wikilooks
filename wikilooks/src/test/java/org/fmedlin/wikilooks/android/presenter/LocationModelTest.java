@@ -45,7 +45,7 @@ public class LocationModelTest {
     private ArticlesResponse getTestResponse() {
         ArticlesResponse response = new ArticlesResponse();
         Article article = new Article();
-        article.id = "1";
+        article.id = "42";
         article.title = "TriDroid West";
         response.addArticle(article);
         return response;
