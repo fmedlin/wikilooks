@@ -15,4 +15,8 @@ public interface LocationModel {
             this.latitude = latitude;
         }
     }
+
+    public static class ArticlesFoundEvent {
+
+    }
 }
