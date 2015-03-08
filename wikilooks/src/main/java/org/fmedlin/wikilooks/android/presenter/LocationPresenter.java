@@ -1,6 +1,7 @@
 package org.fmedlin.wikilooks.android.presenter;
 
 import com.squareup.otto.Subscribe;
+import org.fmedlin.wikilooks.android.presenter.LocationModel.LocationUpdateEvent;
 
 public class LocationPresenter {
     LocationModel model;
@@ -12,7 +13,7 @@ public class LocationPresenter {
     }
 
     @Subscribe
-    public void onLocationUpdate(LocationModel.LocationUpdateEvent event) {
+    public void onLocationUpdate(LocationUpdateEvent event) {
         model.searchLocation(event.longitude, event.latitude);
     }
 
