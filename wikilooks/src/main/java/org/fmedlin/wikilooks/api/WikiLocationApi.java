@@ -5,7 +5,7 @@ import retrofit.RestAdapter.LogLevel;
 
 public class WikiLocationApi {
 
-    static final String ENDPOINT = "http://api.wikilocation.org";
+    static final String ENDPOINT = "http://en.wikipedia.org/w/api.php";
 
     static WikiLocationService service;
 
