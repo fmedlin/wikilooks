@@ -31,13 +31,12 @@ public class LocationModel implements ConnectionCallbacks, OnConnectionFailedLis
     GoogleApiClient playClient;
     List<Article> articles;
 
-    public LocationModel(Context context, WikiLocationService api, Bus bus) {
+    public LocationModel(WikiLocationService api, Bus bus) {
         this.api = api;
         this.bus = bus;
-        setupApiClient(context);
     }
 
-    private void setupApiClient(Context context) {
+    public void setupApiClient(Context context) {
         playClient = new GoogleApiClient.Builder(context)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)

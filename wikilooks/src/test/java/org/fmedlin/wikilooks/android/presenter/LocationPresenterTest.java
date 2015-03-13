@@ -1,5 +1,7 @@
 package org.fmedlin.wikilooks.android.presenter;
 
+import android.content.Context;
+
 import org.fmedlin.wikilooks.android.presenter.LocationModel.LocationUpdateEvent;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,11 +18,12 @@ public class LocationPresenterTest {
     LocationPresenter presenter;
     @Mock LocationModel model;
     @Mock LocationView view;
+    @Mock Context context;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        presenter = new LocationPresenter(model, view);
+        presenter = new LocationPresenter(model, view, context);
     }
 
     @Test
@@ -29,7 +32,7 @@ public class LocationPresenterTest {
         double latitude = 678.90;
 
         presenter.onLocationUpdate(new LocationUpdateEvent(longitude, latitude));
-        verify(model).searchLocation(longitude, latitude);
+        verify(model).searchLocation(latitude, longitude);
     }
 
 }

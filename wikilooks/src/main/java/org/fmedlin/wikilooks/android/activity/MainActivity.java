@@ -27,8 +27,9 @@ public class MainActivity extends Activity {
 
     private void createPresenter() {
         presenter = new LocationPresenter(
-                new LocationModel(this, WikiLocationApi.getWikiLocationService(), BusProvider.getInstance()),
-                new LocationView() { }
+                new LocationModel(WikiLocationApi.getWikiLocationService(), BusProvider.getInstance()),
+                new LocationView() { },
+                this
         );
     }
 
