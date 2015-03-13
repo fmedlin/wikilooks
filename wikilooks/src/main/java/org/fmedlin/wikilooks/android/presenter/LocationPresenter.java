@@ -1,7 +1,10 @@
 package org.fmedlin.wikilooks.android.presenter;
 
 import com.squareup.otto.Subscribe;
+
 import org.fmedlin.wikilooks.android.presenter.LocationModel.LocationUpdateEvent;
+
+import timber.log.Timber;
 
 public class LocationPresenter {
     LocationModel model;
@@ -14,7 +17,8 @@ public class LocationPresenter {
 
     @Subscribe
     public void onLocationUpdate(LocationUpdateEvent event) {
-        model.searchLocation(event.longitude, event.latitude);
+        Timber.d("Location update: %f, %f", event.latitude, event.longitude);
+        model.searchLocation(event.latitude, event.longitude);
     }
 
 }

@@ -1,6 +1,7 @@
 package org.fmedlin.wikilooks.android.presenter;
 
 import com.squareup.otto.Bus;
+
 import org.fmedlin.wikilooks.android.presenter.LocationModel.ArticlesFoundEvent;
 import org.fmedlin.wikilooks.api.ArticlesResponse;
 import org.fmedlin.wikilooks.api.ArticlesResponse.Article;
@@ -13,9 +14,10 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
-import retrofit.Callback;
 
 import java.util.Map;
+
+import retrofit.Callback;
 
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.verify;
@@ -23,7 +25,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(RobolectricTestRunner.class)
 public class LocationModelTest {
 
-    LocationModelImpl model;
+    LocationModel model;
     @Mock WikiLocationService api;
     @Mock Bus bus;
     @Captor ArgumentCaptor<Callback<ArticlesResponse>> callback;
@@ -31,7 +33,7 @@ public class LocationModelTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        model = new LocationModelImpl(api, bus);
+        model = new LocationModel(api, bus);
     }
 
     @Test
@@ -41,6 +43,8 @@ public class LocationModelTest {
         callback.getValue().success(getTestResponse(), null);
         verify(bus).post(any(ArticlesFoundEvent.class));
     }
+
+    // helpers
 
     private ArticlesResponse getTestResponse() {
         ArticlesResponse response = new ArticlesResponse();

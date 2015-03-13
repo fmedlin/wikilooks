@@ -1,6 +1,7 @@
 package org.fmedlin.wikilooks.api;
 
 import retrofit.RestAdapter;
+import retrofit.RestAdapter.LogLevel;
 
 public class WikiLocationApi {
 
@@ -12,6 +13,7 @@ public class WikiLocationApi {
         if (service == null) {
             service = new RestAdapter.Builder()
                     .setEndpoint(ENDPOINT)
+                    .setLogLevel(LogLevel.FULL)
                     .build()
                     .create(WikiLocationService.class);
         }
