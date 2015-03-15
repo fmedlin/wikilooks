@@ -16,5 +16,5 @@ public interface WikiLocationService {
 
     // wikimedia api
     @GET("/api.php")
-    public void api(QueryMap parameters);
+    public void api(QueryMap parameters, Callback<QueryResponse> cb);
 }
